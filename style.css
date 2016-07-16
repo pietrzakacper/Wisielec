@@ -41,6 +41,7 @@ html body{
 
 .letter{
    box-shadow:10px 10px 20px #000;
+   border-radius: 10px;
 }
 
 .button-container{
@@ -48,7 +49,6 @@ html body{
 
 .letters-row{
   line-height: 50px;
-
   padding: 5px;
   cursor: pointer;
 }

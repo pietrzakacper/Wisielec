@@ -10,7 +10,6 @@ for (var i = 0, max = secretWord.length; i < max; ++i) {
     else hiddenSecretWord += "-";
 }
 
-hiddenSecretWord = secretWord;
 
 function displaySecretWord() {
     $("#word-to-guess").html(hiddenSecretWord);

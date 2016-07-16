@@ -30,12 +30,15 @@ html body{
 }
 
 #word-to-guess{
+  font-family: 'Cousine';
   margin-bottom: auto;
-  font-size: 30px;
+  font-size: 25px;
   color: rgb(120, 120, 120);
 }
 
 #header-block{
+  color: white;
+  font-family: 'Berkshire Swash', cursive;
   outline-width: 5px;
 }
 

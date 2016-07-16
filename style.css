@@ -1,18 +1,22 @@
-html body {
+body {
     margin-top: 40px;
     background-color: #21C3D8;
 }
+
 .interface-background {
     margin-top: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: rgb(27, 30, 45);
-    outline: 3px outset rgb(32, 87, 213);
+    border: 3px outset rgb(32, 87, 213);
+    /* Generalnie do tego typu rzeczy używa się bordera a nie outline'a */
 }
+
 #separator {
     margin-left: 15px;
     margin-right: 15px;
 }
+
 .row-eq-height-md {
     display: -webkit-box;
     display: -webkit-flex;
@@ -20,51 +24,71 @@ html body {
     display: flex;
     flex-direction: column;
 }
+
 @media (min-width:992px) {
     .row-eq-height-md {
         flex-direction: row;
     }
 }
+
 #word-to-guess {
     font-family: 'Cousine';
     margin-bottom: auto;
     font-size: 25px;
     color: rgb(120, 120, 120);
 }
+
 #header-block {
     color: white;
     font-family: 'Berkshire Swash', cursive;
-    outline-width: 5px;
+    border-width: 5px;
 }
+
 .letter {
     box-shadow: 10px 10px 20px #000;
     cursor: pointer;
 }
+
 .circled {
     border-radius: 10px;
+    box-shadow: 10px 10px 20px #000;
 }
+
 .button-container {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
 #alphabet {
     line-height: 40px;
 }
+
 .margined-button {
     padding-left: 5px !important;
     padding-right: 5px !important;
 }
+
 .cursor-normal {
     cursor: default !important;
 }
+
 .end-message {
     margin-top: 20px;
     margin-bottom: auto !important;
-    outline: 3px outset rgb(32, 87, 213);
+    border: 3px outset rgb(32, 87, 213);
 }
 
 footer{
-  margin-top: 20px;
-  margin-bottom: auto !important;
-  outline: 3px outset rgb(32, 87, 213);
+    margin-top: 20px;
+    margin-bottom: auto !important;
+    border: 3px outset rgb(32, 87, 213);
 }
+
+
+
+
+#main-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+/* Dodałem to po to by wszystkie wiersze miały taką samą szerokoć ( bootstrap do '.row' domyslnie daje {margin-right,margin-left: -15px} ) */

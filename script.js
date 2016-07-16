@@ -19,7 +19,7 @@ function startGame() {
         content += '<div class="row letters-row" ">\n';
         for (var j = 0; j < 6; ++j) {
             if (i == 5 && j == 5) break;
-            content += '<div class="col-xs-2">\n<div row><div class="col-xs-2"></div><div class="letter btn btn-info center-block" id="letter' + (i * 6 + j) + '">' + alphabet[i * 6 + j] + '</div><div class="col-xs-2"></div></div></div>';
+            content += '<div class="col-xs-2">\n<div row><div class="col-sm-2 col-xs-1"></div><div class="col-sm-8 col-xs-10 letter btn btn-info center-block" id="letter' + (i * 6 + j) + '">' + alphabet[i * 6 + j] + '</div><div class="col-sm-2 col-xs-1"></div></div></div>';
         }
         content += '\n</div>';
     }

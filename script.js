@@ -3,6 +3,8 @@ secretWord = secretWord.toUpperCase();
 
 var hiddenSecretWord = "";
 
+var lifes = 9;
+
 for (var i = 0; i < secretWord.length; ++i) {
     if (secretWord[i] === " ") hiddenSecretWord += " ";
     else hiddenSecretWord += "-";
@@ -29,6 +31,9 @@ function startGame() {
 
 
 function handleLetterClick(letter, obj) {
+  obj.removeClass("btn-info letter");
+  obj.addClass("disabled cursor-normal");
+  obj.attr("onclick",';');
     var isCorrect = false;
     for (var i = 0; i < secretWord.length; ++i) {
         if (secretWord[i] == letter) {
@@ -37,17 +42,21 @@ function handleLetterClick(letter, obj) {
         }
     }
     if (isCorrect) obj.addClass("btn-success");
-    else obj.addClass("btn-danger");
+    else{
+       obj.addClass("btn-danger");
+       lifes--;
+       $("#hangman-picture").attr("src",'img/s'+(9-lifes)+'.png');
+       $("#hangman-picture").attr("alt",'wisielec w stanie '+(9-lifes)+'na 9');
+    }
+
     displaySecretWord();
 }
 
 $(document).ready(function() {
     startGame();
     displaySecretWord();
-    $(".letter").click(function() {
-        $(this).removeClass("btn-info letter");
-        $(this).addClass("disabled cursor-normal");
+    $(".btn-info").click(function() {
+        if(!$(this).hasClass('disabled'))
         handleLetterClick($(this).html(), $(this));
-        //TODO MANAGE GAME LOGIC
     });
 });

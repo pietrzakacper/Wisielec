@@ -31,10 +31,13 @@ function startGame() {
 }
 
 
-function handleLetterClick(letter, obj) {
-    obj.removeClass("btn-info letter");
-    obj.addClass("disabled cursor-normal");
-    obj.attr("onclick", ';');
+
+// Niestety muszę cię zasmucić, ale powracą twoje ukochane '$' (przynajmniej tak było jak uczyłe się PHPa, ponieważ już w sumie taką tradycją jest tworzenie zmiennych dotyczących objektów jQuery poprzez zaczynanie ich nazw dolarem
+function handleLetterClick(letter, $obj) {
+    $obj.removeClass("btn-info letter");
+    $obj.addClass("disabled cursor-normal");
+    $obj.off("click");
+    // dlaczego tak dowiesz się później (w linijce 94.)
     var isCorrect = false;
     for (var i = 0, max = secretWord.length; i < max; ++i) {
         if (secretWord[i] == letter) {
@@ -42,12 +45,12 @@ function handleLetterClick(letter, obj) {
             isCorrect = true;
         }
     }
-    if (isCorrect) obj.addClass("btn-success");
+    if (isCorrect) $obj.addClass("btn-success");
     else {
-        obj.addClass("btn-danger");
+        $obj.addClass("btn-danger");
         lifes--;
-        $("#hangman-picture").attr("src", 'img/s' + (9 - lifes) + '.png');
-        $("#hangman-picture").attr("alt", 'wisielec w stanie ' + (9 - lifes) + 'na 9');
+        // Możemy to skrócić do takiej formy poprzez podanie do attr objektu. Zauważ, że teraz zamiast ',' pomiędzy nazwą atrybutu, a jego wartością jest ':', a atrybuty oddziela ','.
+        $("#hangman-picture").attr({"src": 'img/s' + (9 - lifes) + '.png', "alt": 'wisielec w stanie ' + (9 - lifes) + 'na 9'});
     }
 
     displaySecretWord();
@@ -55,37 +58,57 @@ function handleLetterClick(letter, obj) {
 
 function checkGameEnd() {
     var isEnd = false;
-
+    // Dobrą praktyką jest podpisywanie obiektów do zmiennych gdy wywołujemy je więcej niż 1 raz (taka kwestia optymalizacji).
+    $endGameMsg = $("#end-game-msg");
+    $alphabet = $("#alphabet");
+    $imgContainer = $("#img-container");
+    $playAgain = $("#play-again");
+  
+  
     if (secretWord === hiddenSecretWord) {
-        $("#end-game-msg").html('<strong>Brawo! Odgadłeś hasło!</strong>');
-        $("#end-game-msg").addClass("end-message alert alert-success text-center");
+        $endGameMsg.html('<strong>Brawo! Odgadłeś hasło!</strong>');
+        $endGameMsg.addClass("end-message alert alert-success text-center");
         isEnd = true;
-    } else if (lifes == 0) {
-        $("#end-game-msg").html('<strong>Przegrałeś!</strong> Prawidłowe hasło: "' + secretWord + '"');
-        $("#end-game-msg").addClass("end-message alert alert-danger text-center");
+    } else if (lifes === 0) {
+    // Gdy porównujesz z '0' to używamy '==='
+        $endGameMsg.html('<strong>Przegrałeś!</strong> Prawidłowe hasło: "' + secretWord + '"');
+        $endGameMsg.addClass("end-message alert alert-danger text-center");
         isEnd = true;
     }
     if (isEnd) {
-        $("#alphabet").html('');
-        $("#alphabet").removeClass("interface-background");
-        $("#img-container").removeClass("col-md-6");
-        $("#img-container").addClass("col-md-12");
-        $("#img-container").parent().addClass("center-block");
-        $("#play-again").html('<strong>Jeszcze raz? - KLIKNIJ MNIE!</strong>');
-        $("#play-again").addClass("end-message alert alert-warning btn-warning text-center");
-        $("#play-again").css("cursor", "pointer");
-        $("#play-again").attr("onclick", "location.reload()");
-        $("#end-game-msg").css("border-radius", "0px");
-        $("#play-again").css("border-radius", "0px");
+        $alphabet.html('');
+        $alphabet.removeClass("interface-background");
+      
+        $imgContainer.removeClass("col-md-6");
+        $imgContainer.addClass("col-md-12");
+        $imgContainer.parent().addClass("center-block");
+      
+        $playAgain.html('<strong>Jeszcze raz? - KLIKNIJ MNIE!</strong>');
+        $playAgain.addClass("end-message alert alert-warning btn-warning text-center");
+        $playAgain.css({"cursor": "pointer", "border-radius": "0px"});
+      
+        $playAgain.on( "click", function(){
+          location.reload();
+        });
+      
+        // I teraz to co mnie najbardzie zabolało.
+        // Nie ma sensu przypisywać do tego attrybutu HTML jak możesz przypisać eventa bezporednio do tego elemetu w JS.
+      
+        $endGameMsg.css("border-radius", "0px");
+        // Tutaj tak jak wcześniej skracamy to tylko do jednego odwołania.
     }
 }
+
 $(document).ready(function() {
     startGame();
     displaySecretWord();
-    $(".btn-info").click(function() {
+    $(".btn-info").on("click", function() {
         if (!$(this).hasClass('disabled')) {
             handleLetterClick($(this).html(), $(this));
             checkGameEnd();
         }
     });
+    // http://stackoverflow.com/questions/9122078/difference-between-onclick-vs-click
 });
+
+// Generalnie to do JSa chyba tyle.

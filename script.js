@@ -16,22 +16,11 @@ function startGame() {
     var alphabet = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż".toUpperCase();
     var content = '';
     for (var i = 0; i < 6; ++i) {
-        content += '<div class="row letters-row" ">\n';
-        content += '<div class="col-xs-12 col-md-6">';
-            content += '<div class="row " ">\n';
-        for (var j = 0; j < 3; ++j) {
-            content += '<div class="col-xs-4 letter btn btn-info center-block" id="letter' + (i * 6 + j) + '">' + alphabet[i * 6 + j] + '</div>';
+        content += '<div class="row letters-row">\n';
+        for (var j = 0; j < 6; ++j) {
+          if((i * 6 + j) ==35)break;
+            content += '<div class="col-xs-2 button-container"><div class=" btn-lg btn-info letter">' + alphabet[(i * 6 + j)] + '</div></div>';
         }
-          content += '\n</div>';
-          content += '\n</div>';
-          content += '<div class="col-xs-12 col-md-6">';
-            content += '<div class="row" ">\n';
-        for (var j = 3; j < 6; ++j) {
-            if (i == 5 && j == 5) break;
-            content += '<div class="col-xs-4 letter btn btn-info center-block" id="letter' + (i * 6 + j) + '">' + alphabet[i * 6 + j] + '</div>';
-        }
-        content += '\n</div>';
-          content += '\n</div>';
         content += '\n</div>';
     }
 

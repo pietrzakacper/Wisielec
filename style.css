@@ -45,6 +45,8 @@ html body{
 }
 
 .button-container{
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .letters-row{

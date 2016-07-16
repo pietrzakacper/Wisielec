@@ -1,4 +1,4 @@
-body {
+html body {
     margin-top: 40px;
     background-color: #21C3D8;
 }
@@ -92,3 +92,8 @@ footer{
     margin-right: 0;
 }
 /* Dodałem to po to by wszystkie wiersze miały taką samą szerokoć ( bootstrap do '.row' domyslnie daje {margin-right,margin-left: -15px} ) */
+
+footer > .well {
+    margin-bottom: 0px;    
+}
+}

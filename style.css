@@ -41,18 +41,18 @@ html body{
 
 .letter{
    box-shadow:10px 10px 20px #000;
-   border-radius: 10px;
+
+     cursor: pointer;
 }
 
 .button-container{
+  border-radius: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
 .letters-row{
-  line-height: 50px;
-  padding: 5px;
-  cursor: pointer;
+  line-height: 30px;
 }
 
 .margined-button{

@@ -9,7 +9,6 @@ html body {
     padding-bottom: 20px;
     background-color: rgb(27, 30, 45);
     border: 3px outset rgb(32, 87, 213);
-    /* Generalnie do tego typu rzeczy używa się bordera a nie outline'a */
 }
 
 #separator {
@@ -80,20 +79,15 @@ html body {
 
 footer{
     margin-top: 20px;
-    margin-bottom: auto !important;
+    margin-bottom: 10px !important;
     border: 3px outset rgb(32, 87, 213);
 }
-
-
-
 
 #main-row {
     margin-left: 0;
     margin-right: 0;
 }
-/* Dodałem to po to by wszystkie wiersze miały taką samą szerokoć ( bootstrap do '.row' domyslnie daje {margin-right,margin-left: -15px} ) */
 
 footer > .well {
-    margin-bottom: 0px;    
-}
+    margin-bottom: 0px;
 }

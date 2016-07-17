@@ -23,7 +23,7 @@ function startGame() {
         content += '<div class="row">\n';
         for (var j = 0; j < 6; ++j) {
             if ((i * 6 + j) == 35) break;
-            content += '<div class="col-sm-4 col-xs-4 col-md-2 button-container"><div class="btn-info letter circled">' + alphabet[(i * 6 + j)] + '</div></div>';
+            content += '<div class="col-sm-2 col-xs-4 button-container"><div class="btn-info letter circled">' + alphabet[(i * 6 + j)] + '</div></div>';
         }
         content += '\n</div>';
     }

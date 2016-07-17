@@ -43,6 +43,8 @@ html body {
     border-width: 5px;
 }
 
+#header-block:hover { border-style: inset; cursor: pointer;} 
+
 .letter {
     box-shadow: 10px 10px 20px #000;
     cursor: pointer;
